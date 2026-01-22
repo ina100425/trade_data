@@ -18,7 +18,7 @@ def load_smartcard_data():
         baci_korea = pd.read_csv("./file/baci_korea_only.csv")
         country_codes = pd.read_csv("./file/country_codes_V202501.csv")
     except FileNotFoundError:
-        st.error("데이터 파일을 찾을 수 없습니다. 경로를 확인해주세요.")
+        st.error("파일을 찾을 수 없습니다.")
         return pd.DataFrame()
     
     # 852352 품목만 즉시 필터링
@@ -106,7 +106,9 @@ if not df.empty:
 
     # 5. 사이드바 - 설정 및 다운로드
     st.sidebar.title("🛠 설정")
-    st.sidebar.info("품목: 852352 (스마트카드)\n대상: 한국 수출 데이터")
+    st.sidebar.info("품목: 852352 (스마트카드)  \n대상: 한국 수출 데이터")
+
+
 
     # 데이터 다운로드 버튼
     csv = df.to_csv(index=False).encode('utf-8')
